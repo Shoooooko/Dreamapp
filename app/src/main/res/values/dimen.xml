@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="age_width">36dp</dimen>
+    <dimen name="image_size">96dp</dimen>
+    <dimen name="button_height">64dp</dimen>
+    <dimen name="summary_size">24dp</dimen>
+    <dimen name="button_text_size">16dp</dimen>
+    <dimen name="person_info_size">16dp</dimen>
+    <dimen name="large_size">20dp</dimen>
+    <dimen name="small_size">16dp</dimen>
+
+    <!--favoritelist-->
+    <dimen name="list_title_size">24dp</dimen>
+    <dimen name="list_image_size">64dp</dimen>
+    <dimen name="list_info_size">16dp</dimen>
+
+</resources>
