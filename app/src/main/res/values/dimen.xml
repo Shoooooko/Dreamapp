@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="age_width">36dp</dimen>
-    <dimen name="image_size">96dp</dimen>
-    <dimen name="button_height">64dp</dimen>
-    <dimen name="summary_size">24dp</dimen>
-    <dimen name="button_text_size">16dp</dimen>
-    <dimen name="person_info_size">16dp</dimen>
-    <dimen name="large_size">20dp</dimen>
-    <dimen name="small_size">16dp</dimen>
+    <dimen name="age_width">36sp</dimen>
+    <dimen name="image_size">96sp</dimen>
+    <dimen name="button_height">64sp</dimen>
+    <dimen name="summary_size">24sp</dimen>
+    <dimen name="button_text_size">16sp</dimen>
+    <dimen name="person_name_size">20sp</dimen>
+    <dimen name="person_motto_size">18sp</dimen>
+    <dimen name="large_size">20sp</dimen>
+    <dimen name="small_size">16sp</dimen>
 
     <!--favoritelist-->
-    <dimen name="list_title_size">24dp</dimen>
-    <dimen name="list_image_size">64dp</dimen>
-    <dimen name="list_info_size">16dp</dimen>
+    <dimen name="list_title_size">24sp</dimen>
+    <dimen name="list_image_size">64sp</dimen>
+    <dimen name="list_info_size">16sp</dimen>
 
 </resources>

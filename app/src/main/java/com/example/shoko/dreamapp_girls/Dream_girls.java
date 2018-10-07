@@ -2,6 +2,7 @@ package com.example.shoko.dreamapp_girls;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -111,7 +112,41 @@ public class Dream_girls extends AppCompatActivity {
             "和歌、漢文、歴史の教養があったから",
             murasakiPasses,
             2);
-    Person [] data={gates,shimoda,hakui,sakata,murasaki};
+
+    CareerPass okazakiPass1 = new CareerPass(18, "神奈川工科大学　入学");
+    CareerPass okazakiPass2 = new CareerPass(22, "トランスコスモス株式会社　入社");
+    CareerPass okazakiPass3 = new CareerPass(23, "某DB系の学会で、元Yahoo! 現ARG社の代表を務める岡本氏の薫陶を受ける");
+    CareerPass okazakiPass4 = new CareerPass(24, "ARG社　入社");
+    CareerPass okazakiPass5 = new CareerPass(46, "ARG社専務取締役　就任");
+    CareerPass[] okazakiPasses = {okazakiPass1, okazakiPass2, okazakiPass3, okazakiPass4, okazakiPass5};
+    Person okazaki = new Person(
+            "岡崎 有彩",
+            "aiokazaki.png",
+            "26歳にして産学連携コーディネート企業の役員",
+            "一期一会",
+            27,
+            "ARG社専務取締役" ,
+            "産学連携に興味があったから",
+            okazakiPasses,
+            2);
+    CareerPass tomiyaPass1 = new CareerPass(23, "アクセンチュア　入社");
+    CareerPass tomiyaPass2 = new CareerPass(27, "日本経済新聞　入社");
+    CareerPass tomiyaPass3 = new CareerPass(29, "リクルートテクノロジーズ　入社");
+    CareerPass tomiyaPass4 = new CareerPass(30, "独立ライターへの思いを実現したいという思いから、Media Vista　起業");
+    CareerPass tomiyaPass5 = new CareerPass(32, "リクルート住まいカンパニーで編集職に就く");
+    CareerPass[] tomiyaPasses = {tomiyaPass1, tomiyaPass2, tomiyaPass3, tomiyaPass4, tomiyaPass5};
+    Person tomiya = new Person(
+            "富谷 瑠美",
+            "rumitomiya.png",
+            "リクルート編集者と独立ジャーナリストの二足の草鞋を履くワーキングママ",
+            "本能のおもむくままに",
+            35,
+            "リクルート編集者" ,
+            "編集の仕事に興味があったから",
+            tomiyaPasses,
+            3);
+
+    Person [] data={okazaki, tomiya, gates,shimoda,hakui,sakata,murasaki};
 
     ArrayList<Person> arrayList = new ArrayList<>();
     Context context = this;
@@ -137,6 +172,8 @@ public class Dream_girls extends AppCompatActivity {
         actionBar.setTitle("夢みるアプリ");
 
         //swipeの設定
+        arrayList.add(okazaki);
+        arrayList.add(tomiya);
         arrayList.add(gates);
         arrayList.add(shimoda);
         arrayList.add(hakui);
@@ -149,9 +186,8 @@ public class Dream_girls extends AppCompatActivity {
         swipeview.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
             @Override
             public void removeFirstObjectInAdapter() {
-//                arrayList.remove(0);
                 Random rnd = new Random();
-                int index = rnd.nextInt(3);
+                int index = rnd.nextInt(arrayList.size());
                 arrayList.remove(0);
                 arrayList.add(data[index]);
                 adapter.notifyDataSetChanged();
@@ -159,13 +195,13 @@ public class Dream_girls extends AppCompatActivity {
 
             @Override
             public void onLeftCardExit(Object o) {
-                Toast.makeText(context,"left",Toast.LENGTH_SHORT).show();
+
 
             }
 
             @Override
             public void onRightCardExit(Object o) {
-                Toast.makeText(context,"right",Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -202,10 +238,10 @@ public class Dream_girls extends AppCompatActivity {
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random rnd = new Random();
-                int index = rnd.nextInt(3);
-                final Snackbar snackbar = Snackbar.make(v, data[index].getName() +"お気に入りリストに登録しました！", Snackbar.LENGTH_SHORT);
+
+                final Snackbar snackbar = Snackbar.make(v, arrayList.get(0).getName() +"をお気に入りリストに登録しました！", Snackbar.LENGTH_SHORT);
                 snackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorAccent));
+
                 snackbar.show();
                 swipeview.getTopCardListener().selectRight();
                 }

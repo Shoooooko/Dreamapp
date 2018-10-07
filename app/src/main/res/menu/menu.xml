@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/action_search"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/list_icon"
         android:title="test"
         app:showAsAction="always" />
 </menu>

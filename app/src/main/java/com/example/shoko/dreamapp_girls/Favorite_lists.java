@@ -108,6 +108,39 @@ public class Favorite_lists extends AppCompatActivity {
             murasakiPasses,
             2);
 
+    CareerPass okazakiPass1 = new CareerPass(18, "神奈川工科大学　入学");
+    CareerPass okazakiPass2 = new CareerPass(22, "トランスコスモス株式会社　入社");
+    CareerPass okazakiPass3 = new CareerPass(23, "某DB系の学会で、元Yahoo! 現ARG社の代表を務める岡本氏の薫陶を受ける");
+    CareerPass okazakiPass4 = new CareerPass(24, "ARG社　入社");
+    CareerPass okazakiPass5 = new CareerPass(46, "ARG社専務取締役　就任");
+    CareerPass[] okazakiPasses = {okazakiPass1, okazakiPass2, okazakiPass3, okazakiPass4, okazakiPass5};
+    Person okazaki = new Person(
+            "岡崎 有彩",
+            "aiokazaki.png",
+            "26歳にして産学連携コーディネート企業の役員",
+            "一期一会",
+            27,
+            "ARG社専務取締役" ,
+            "産学連携に興味があったから",
+            okazakiPasses,
+            2);
+    CareerPass tomiyaPass1 = new CareerPass(23, "アクセンチュア　入社");
+    CareerPass tomiyaPass2 = new CareerPass(27, "日本経済新聞　入社");
+    CareerPass tomiyaPass3 = new CareerPass(29, "リクルートテクノロジーズ　入社");
+    CareerPass tomiyaPass4 = new CareerPass(30, "独立ライターへの思いを実現したいという思いから、Media Vista　起業");
+    CareerPass tomiyaPass5 = new CareerPass(32, "リクルート住まいカンパニーで編集職に就く");
+    CareerPass[] tomiyaPasses = {tomiyaPass1, tomiyaPass2, tomiyaPass3, tomiyaPass4, tomiyaPass5};
+    Person tomiya = new Person(
+            "富谷 瑠美",
+            "rumitomiya.png",
+            "リクルート編集者と独立ジャーナリストの二足の草鞋を履くワーキングママ",
+            "本能のおもむくままに",
+            35,
+            "リクルート編集者" ,
+            "編集の仕事に興味があったから",
+            tomiyaPasses,
+            3);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +155,7 @@ public class Favorite_lists extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-        Person[] personArray = {gates,shimoda,hakui,sakata,murasaki};
+        Person[] personArray = {okazaki, tomiya, gates,shimoda,hakui,sakata,murasaki};
         List<Person> personList = Arrays.asList(personArray);
         // レイアウトからリストビューを取得
         ListView listView = (ListView)findViewById(R.id.list_view);
