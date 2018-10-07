@@ -1,5 +1,6 @@
 package com.example.shoko.dreamapp_girls;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
@@ -169,7 +170,7 @@ public class Dream_girls extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("夢みるアプリ");
+        actionBar.setTitle("Dreamee");
 
         //swipeの設定
         arrayList.add(okazaki);
@@ -201,8 +202,10 @@ public class Dream_girls extends AppCompatActivity {
 
             @Override
             public void onRightCardExit(Object o) {
+                final Snackbar snackbar = Snackbar.make(((Activity)context).findViewById(R.id.like_button),"お気に入りリストに登録しました！", Snackbar.LENGTH_SHORT);
+                snackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorAccent));
 
-
+                snackbar.show();
             }
 
             @Override
@@ -239,7 +242,7 @@ public class Dream_girls extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final Snackbar snackbar = Snackbar.make(v, arrayList.get(0).getName() +"をお気に入りリストに登録しました！", Snackbar.LENGTH_SHORT);
+                final Snackbar snackbar = Snackbar.make(v, "お気に入りリストに登録しました！", Snackbar.LENGTH_SHORT);
                 snackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorAccent));
 
                 snackbar.show();
