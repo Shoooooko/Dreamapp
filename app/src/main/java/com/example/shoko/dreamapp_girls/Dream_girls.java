@@ -152,6 +152,7 @@ public class Dream_girls extends AppCompatActivity {
 //                arrayList.remove(0);
                 Random rnd = new Random();
                 int index = rnd.nextInt(3);
+                arrayList.remove(0);
                 arrayList.add(data[index]);
                 adapter.notifyDataSetChanged();
             }
