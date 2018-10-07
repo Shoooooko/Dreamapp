@@ -14,6 +14,7 @@
         android:background="@color/colorPrimary"
         app:titleTextColor="@color/colorWhite"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
@@ -26,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textSize="@dimen/list_title_size"
+            android:fontFamily="@font/azuki"
             android:text="My Dream List"/>
 
         <ListView

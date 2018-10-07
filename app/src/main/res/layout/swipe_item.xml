@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textSize="@dimen/large_size"
+            android:fontFamily="@font/azuki"
             android:text="Turning Point" />
 
         <LinearLayout
@@ -104,6 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:textSize="@dimen/large_size"
+            android:fontFamily="@font/azuki"
             android:text="Career"
             app:layout_constraintStart_toStartOf="parent" />
 
