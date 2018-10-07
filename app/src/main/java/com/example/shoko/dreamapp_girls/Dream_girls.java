@@ -1,5 +1,6 @@
 package com.example.shoko.dreamapp_girls;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
@@ -17,9 +18,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.Toast;
 
+import com.lorentzos.flingswipe.SwipeFlingAdapterView;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Dream_girls extends AppCompatActivity {
@@ -109,23 +113,10 @@ public class Dream_girls extends AppCompatActivity {
             2);
     Person [] data={gates,shimoda,hakui,sakata,murasaki};
 
+    ArrayList<Person> arrayList = new ArrayList<>();
+    Context context = this;
 
-    TextView nameView;
-    TextView summaryView;
-    ImageView imageView;
-    TextView mottoView;
-    TextView tp_ageView;
-    TextView tp_descView;
-    TextView cr_age1View;
-    TextView cr_desc1View;
-    TextView cr_age2View;
-    TextView cr_desc2View;
-    TextView cr_age3View;
-    TextView cr_desc3View;
-    TextView cr_age4View;
-    TextView cr_desc4View;
-    TextView cr_age5View;
-    TextView cr_desc5View;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -138,23 +129,6 @@ public class Dream_girls extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dream_girls);
-        nameView = findViewById(R.id.name);
-        summaryView = findViewById(R.id.summary);
-        mottoView = findViewById(R.id.motto);
-        imageView = findViewById(R.id.image);
-        tp_ageView = findViewById(R.id.tp_age);
-        tp_descView = findViewById(R.id.tp_desc);
-        cr_age1View = findViewById(R.id.cr_age1);
-        cr_desc1View = findViewById(R.id.cr_desc1);
-        cr_age2View = findViewById(R.id.cr_age2);
-        cr_desc2View = findViewById(R.id.cr_desc2);
-        cr_age3View = findViewById(R.id.cr_age3);
-        cr_desc3View = findViewById(R.id.cr_desc3);
-        cr_age4View = findViewById(R.id.cr_age4);
-        cr_desc4View = findViewById(R.id.cr_desc4);
-        cr_age5View = findViewById(R.id.cr_age5);
-        cr_desc5View = findViewById(R.id.cr_desc5);
-        ImageView imageView = findViewById(R.id.image);
 
         // Toolbarの設定
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -162,9 +136,53 @@ public class Dream_girls extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("夢みるアプリ");
 
+        //swipeの設定
+        arrayList.add(gates);
+        arrayList.add(shimoda);
+        arrayList.add(hakui);
+        arrayList.add(sakata);
+        arrayList.add(murasaki);
+
+        final SwipeFlingAdapterView swipeview = findViewById(R.id.swipeAdapter);
+        final CardsAdapter adapter = new CardsAdapter(arrayList,this);
+        swipeview.setAdapter(adapter);
+        swipeview.setFlingListener(new SwipeFlingAdapterView.onFlingListener() {
+            @Override
+            public void removeFirstObjectInAdapter() {
+//                arrayList.remove(0);
+                Random rnd = new Random();
+                int index = rnd.nextInt(3);
+                arrayList.add(0,data[index]);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onLeftCardExit(Object o) {
+                Toast.makeText(context,"left",Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onRightCardExit(Object o) {
+                Toast.makeText(context,"right",Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onAdapterAboutToEmpty(int i) {
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onScroll(float v) {
+
+            }
+        });
+
+
 
         //初期画面
-        initview(data[0]);
+//        initview(data[0]);
 
         //次のrandomさん表示
         Button skip = findViewById(R.id.skip_button);
@@ -174,7 +192,8 @@ public class Dream_girls extends AppCompatActivity {
                 //Randomクラスのインスタンス化
                 Random rnd = new Random();
                 int index = rnd.nextInt(3);
-                initview(data[index]);
+
+//                initview(data[index]);
             }
         });
         //お気に入りに追加
@@ -188,7 +207,10 @@ public class Dream_girls extends AppCompatActivity {
 
                 Random rnd = new Random();
                 int index = rnd.nextInt(3);
-                initview(data[index]);
+                arrayList.add(0,data[index]);
+                adapter.notifyDataSetChanged();
+
+//                initview(data[index]);
             }
 
         });
@@ -208,35 +230,6 @@ public class Dream_girls extends AppCompatActivity {
 
 
     }
-    public void initview(Person person){
-        nameView.setText(person.getName());
-        summaryView.setText(person.getSummary());
-        mottoView.setText(person.getMotto());
-        try {
-            InputStream istream = getResources().getAssets().open(person.getImage());
-            Bitmap bitmap = BitmapFactory.decodeStream(istream);
-            imageView.setImageBitmap(bitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        CareerPass tp = person.getCareerPass()[person.getTurningPointIndex()];
-        tp_ageView.setText(String.valueOf(tp.getAge()));
-        tp_ageView.setText(""+tp.getAge());
-        tp_descView.setText(tp.getText());
-        cr_age1View.setText(""+person.getCareerPass()[0].getAge());
-        cr_desc1View.setText(person.getCareerPass()[0].getText());
-        cr_age2View.setText(""+person.getCareerPass()[1].getAge());
-        cr_desc2View.setText(person.getCareerPass()[1].getText());
-        cr_age3View.setText(""+person.getCareerPass()[2].getAge());
-        cr_desc3View.setText(person.getCareerPass()[2].getText());
-        cr_age4View.setText(""+person.getCareerPass()[3].getAge());
-        cr_desc4View.setText(person.getCareerPass()[3].getText());
-        cr_age5View.setText(""+person.getCareerPass()[4].getAge());
-        cr_desc5View.setText(person.getCareerPass()[4].getText());
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
