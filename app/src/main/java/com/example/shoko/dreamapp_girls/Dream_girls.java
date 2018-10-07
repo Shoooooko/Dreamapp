@@ -152,7 +152,7 @@ public class Dream_girls extends AppCompatActivity {
 //                arrayList.remove(0);
                 Random rnd = new Random();
                 int index = rnd.nextInt(3);
-                arrayList.add(0,data[index]);
+                arrayList.add(data[index]);
                 adapter.notifyDataSetChanged();
             }
 
@@ -192,7 +192,7 @@ public class Dream_girls extends AppCompatActivity {
                 //Randomクラスのインスタンス化
                 Random rnd = new Random();
                 int index = rnd.nextInt(3);
-
+                swipeview.getTopCardListener().selectLeft();
 //                initview(data[index]);
             }
         });
@@ -201,17 +201,13 @@ public class Dream_girls extends AppCompatActivity {
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Snackbar snackbar = Snackbar.make(v, "お気に入りリストに登録しました！", Snackbar.LENGTH_SHORT);
-                snackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                snackbar.show();
-
                 Random rnd = new Random();
                 int index = rnd.nextInt(3);
-                arrayList.add(0,data[index]);
-                adapter.notifyDataSetChanged();
-
-//                initview(data[index]);
-            }
+                final Snackbar snackbar = Snackbar.make(v, data[index].getName() +"お気に入りリストに登録しました！", Snackbar.LENGTH_SHORT);
+                snackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                snackbar.show();
+                swipeview.getTopCardListener().selectRight();
+                }
 
         });
 

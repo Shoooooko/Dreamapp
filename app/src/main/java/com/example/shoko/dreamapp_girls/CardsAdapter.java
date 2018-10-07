@@ -63,6 +63,13 @@ public class CardsAdapter extends BaseAdapter {
         return view;
     }
 
+    public void updatePersonList(Person person) {
+        persons.clear();
+//        persons.addAll(new_data);
+        persons.add(person);
+        this.notifyDataSetChanged();
+    }
+
     public void initview(Person person, viewHolder holder){
         holder.nameView.setText(person.getName());
         holder.summaryView.setText(person.getSummary());
